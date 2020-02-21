@@ -35,6 +35,7 @@ pipeline {
 					}catch{
 						echo "could not push or remove image"
 					}
+				}
 			}
 		}
 		stage("\033[1;32m Run Container \033[0m") {
