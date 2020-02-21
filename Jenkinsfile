@@ -18,18 +18,23 @@ pipeline {
 			steps {
 				script{
 					sh "docker images"
-					def create_image = sh(
+					sh(
 						script: 'docker build -t pdlwebapp:1.0 .',
 						returnStdout: true
-						).trim()
-						echo "Result: $create_image"
+					).trim()
 				}
 			}
 		}
 		stage("\033[1;32m Push Image to Dockerhub \033[0m") {
 			steps {
 			    sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
-				sh "sudo docker push summerp24/pdlwebapp:1.0"
+				script {
+					try{
+						sudo docker push summerp24/pdlwebapp:1.0
+						docker rmi summerp24/pdlwebapp:1.0
+					}catch{
+						echo "could not push or remove image"
+					}
 			}
 		}
 		stage("\033[1;32m Run Container \033[0m") {
