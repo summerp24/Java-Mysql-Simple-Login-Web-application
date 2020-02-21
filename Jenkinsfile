@@ -22,8 +22,7 @@ pipeline {
 						script: 'docker build -t pdlwebapp:1.0 .',
 						returnStdout: true
 						).trim()
-						sampleVar = readJSON text : create_image
-						sampleVar.each { key, value ->
+						create_image.each { key, value ->
 							echo "Key: $key and value:  $value"
 						}
 				}
