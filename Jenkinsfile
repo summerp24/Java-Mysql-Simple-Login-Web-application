@@ -12,19 +12,19 @@ pipeline {
 			steps {
 			    sh "ls -ltr"
 				sh "mvn clean install package"
-		}
+			}
 		}
 		stage("\033[1;32m Build Docker Image \033[0m") {
 			steps {
 			    sh "docker images"
-			    def create_image = sh (
-				    script: "docker build -t pdlwebapp:1.0 .",
+			    def create_image = sh(
+				    script: 'docker build -t pdlwebapp:1.0 .',
 				    returnStdout: true
 				    ).trim()
-			    sampleVar = readJSON text : create_image
-				sampleVar.each { key, value ->
+			        sampleVar = readJSON text : create_image
+					sampleVar.each { key, value ->
 					    echo "Key: $key and value:  $value"
-				}
+					}
 			}
 		}
 		stage("\033[1;32m Push Image to Dockerhub \033[0m") {
