@@ -27,8 +27,9 @@ pipeline {
 		}
 		stage("\033[1;32m Push Image to Dockerhub \033[0m") {
 			steps {
-			    sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
+			    
 				script {
+					sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
 					try{
 						sudo docker push summerp24/pdlwebapp:1.0
 						docker rmi summerp24/pdlwebapp:1.0
