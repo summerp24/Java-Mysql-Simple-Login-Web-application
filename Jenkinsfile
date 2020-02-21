@@ -1,5 +1,6 @@
 pipeline {
  	agent any
+	wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
 	tools {
 		maven 'Maven3.6.3'
 		jdk 'Java8'
@@ -32,4 +33,5 @@ pipeline {
 		}
 		}
 	}
+}
 }
