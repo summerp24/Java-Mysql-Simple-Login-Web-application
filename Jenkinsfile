@@ -22,9 +22,7 @@ pipeline {
 						script: 'docker build -t pdlwebapp:1.0 .',
 						returnStdout: true
 						).trim()
-						create_image.each { key, value ->
-							echo "Key: $key and value:  $value"
-						}
+						echo "Result: $create_image"
 				}
 			}
 		}
