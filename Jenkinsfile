@@ -1,12 +1,12 @@
 pipeline {
  	agent any
-	wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+	
 	tools {
 		maven 'Maven3.6.3'
 		jdk 'Java8'
 	}
 	stages {
-		
+		wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
 		stage('build_source') {
 			steps {
 			    sh "ls -ltr"
@@ -32,6 +32,6 @@ pipeline {
 			    sh "docker run -itd --name webapp01 -p 8090:8080 pdlwebapp:1.0"
 		}
 		}
+		}
 	}
-}
 }
