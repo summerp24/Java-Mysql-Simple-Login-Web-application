@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('docker_image') {
 			steps {
-			    sh "docker build -t mtwebapp:1.0 ."
+			    sh "docker build -t mtwebapp:2.0 ."
    	        }
 		}
 		stage('docker_push') {
