@@ -31,8 +31,8 @@ pipeline {
 				script {
 					sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
 					try{
-						sh "sudo docker push summerp24/pdlwebapp:1.0"
-						sh "docker rmi summerp24/pdlwebapp:1.0"
+						sh "sudo docker push summerlp24/pdlwebapp:1.0"
+						sh "docker rmi summerp24/pdlwebapp:1.0 pdlwebapp:1.0"
 					}catch(Exception e){
 						echo "could not push or remove imageL $e" 
 					}
