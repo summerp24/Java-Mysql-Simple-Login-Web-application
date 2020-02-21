@@ -33,8 +33,8 @@ pipeline {
 					try{
 						sh "sudo docker push summerp24/pdlwebapp:1.0"
 						sh "docker rmi summerp24/pdlwebapp:1.0"
-					}catch{
-						echo "could not push or remove image"
+					}catch(Exception e){
+						echo "could not push or remove imageL $e" 
 					}
 				}
 			}
