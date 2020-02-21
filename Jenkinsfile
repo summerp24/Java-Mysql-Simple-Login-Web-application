@@ -18,8 +18,8 @@ pipeline {
 		}
 		stage('docker_push') {
 			steps {
-			    sh "docker tag mtwebapp:1.0 milindtech/mtwebapp:1.0"
-				sh "docker push milindtech/mtwebapp:1.0"
+			    sh "docker tag mtwebapp:2.0 milindtech/mtwebapp:2.0"
+				sh "docker push milindtech/mtwebapp:2.0"
    	        }
 		}
 	}
