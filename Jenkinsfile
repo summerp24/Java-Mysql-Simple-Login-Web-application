@@ -14,18 +14,18 @@ pipeline {
 		stage('docker_image') {
 			steps {
 			    sh "docker images"
-			    sh "docker build -t mtwebapp:2.0 ."
+			    sh "docker build -t pdlwebapp:1.0 ."
    	        }
 		}
 		stage('docker_push') {
 			steps {
-			    sh "sudo docker tag mtwebapp:2.0 milindtech/mtwebapp:2.0"
-				sh "sudo docker push milindtech/mtwebapp:2.0"
+			    sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
+				sh "sudo docker push summerp24/pdlwebapp:1.0"
    	        }
 		}
 		stage('container_up') {
 			steps {
-			    sh "docker run -itd --name webapp01 -p 8090:8080 mtwebapp:2.0"
+			    sh "docker run -itd --name webapp01 -p 8090:8080 pdlwebapp:1.0"
    	        }
 		}
 	}
