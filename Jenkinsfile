@@ -13,6 +13,7 @@ pipeline {
 		}
 		stage('docker_image') {
 			steps {
+			    sh "docker images"
 			    sh "docker build -t mtwebapp:2.0 ."
    	        }
 		}
