@@ -22,5 +22,10 @@ pipeline {
 				sh "sudo docker push milindtech/mtwebapp:2.0"
    	        }
 		}
+		stage('container_up') {
+			steps {
+			    sh "docker run -itd --name webapp01 -p 8090:8080 mtwebapp:2.0"
+   	        }
+		}
 	}
 }
