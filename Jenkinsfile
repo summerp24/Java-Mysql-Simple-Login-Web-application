@@ -8,13 +8,13 @@ pipeline {
 	    ansiColor('xterm')
 	}
 	stages {
-		stage('build_source') {
+		stage("\033[42m Build Source \033[0m") {
 			steps {
 			    sh "ls -ltr"
 				sh "mvn clean install package"
 		}
 		}
-		stage('docker_image') {
+		stage("\033[42m Build Docker Image \033[0m") {
 			steps {
 			    ansiColor('xterm') {
 				    sh "docker images"
@@ -22,13 +22,13 @@ pipeline {
 			    }
 		}
 		}
-		stage('docker_push') {
+		stage("\033[42m Push Image to Dockerhub \033[0m") {
 			steps {
 			    sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
 				sh "sudo docker push summerp24/pdlwebapp:1.0"
 			}
 		}
-		stage('container_up') {
+		stage("\033[42m Run Container \033[0m") {
 			steps {
 			    sh "docker run -itd --name webapp01 -p 8090:8080 pdlwebapp:1.0"
 			}
