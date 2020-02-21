@@ -1,12 +1,13 @@
 pipeline {
  	agent any
-	
 	tools {
 		maven 'Maven3.6.3'
 		jdk 'Java8'
 	}
+	options {
+	    ansiColor('xterm')
+	}
 	stages {
-		wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
 		stage('build_source') {
 			steps {
 			    sh "ls -ltr"
@@ -25,13 +26,12 @@ pipeline {
 			steps {
 			    sh "sudo docker tag pdlwebapp:1.0 summerp24/pdlwebapp:1.0"
 				sh "sudo docker push summerp24/pdlwebapp:1.0"
-		}
+			}
 		}
 		stage('container_up') {
 			steps {
 			    sh "docker run -itd --name webapp01 -p 8090:8080 pdlwebapp:1.0"
-		}
-		}
+			}
 		}
 	}
 }
